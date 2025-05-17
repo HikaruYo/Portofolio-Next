@@ -1,46 +1,80 @@
 'use client'
-import { ReactTyped } from 'react-typed'
-import Link from "next/link"
-import { FaGithub } from "react-icons/fa"
-import { FaInstagram } from "react-icons/fa"
-import Violet from '@/public/Violet.jpg'
+
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Violet from "@/public/Violet.jpg"
+import { FaGithub, FaInstagram } from "react-icons/fa";
+import Link from "next/link";
+import {ReactTyped} from "react-typed";
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center h-screen p-8 gap-80 bg-[#323946]">
-      <div className="space-y-3">
-        <h3 className="font-bold text-3xl text-white">Hello, I&apos;m</h3>
-        <h1 className="max-w-[460px] leading-tight font-bold text-5xl text-white">Adithya Prasetio Hutahaean</h1>
-        <h3 className="font-bold text-3xl text-white">And I&apos;m a<span> </span>
-          <ReactTyped
-            strings={[
-              "Web Developer",
-              "Backend Developer",
-            ]}
-            typeSpeed={70}
-            backSpeed={70}
-            loop
-            className="text-[#5b6cde]"
-          ></ReactTyped>
-          {/* Sosmed */}
-          <div className="my-12 space-x-4">
-            <Link href="https://github.com/HikaruYo">
-              <FaGithub
-                className="inline-flex justify-center items-center w-10 h-10 border-2 border-[#5b6cde] rounded-full p-2 text-[#5b6cde] hover:text-[#323946] bg-transparent hover:bg-[#5b6cde] transition duration-500"
-              />
-            </Link>
-            <Link href="https://www.instagram.com/adithaean/">
-              <FaInstagram
-                className="inline-flex justify-center items-center w-10 h-10 border-2 border-[#5b6cde] rounded-full p-2 text-[#5b6cde] hover:text-[#323946] bg-transparent hover:bg-[#5b6cde] transition duration-500"
-              />
-            </Link>
-          </div>
-        </h3>
-      </div>
+    <div className="min-h-screen flex bg-white text-black dark:bg-[#212529] dark:text-white">
 
-      <div>
-        <img src={Violet} alt="Violet" className="w-[25vw] rounded-2xl"/>
-      </div>
-    </main>
-  )
+      {/* Main Content */}
+      <main className="flex items-center justify-center p-10">
+        <div className="flex flex-col md:flex-row items-center gap-24">
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="w-[350px] h-[300px] rounded-3xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src={Violet}
+              alt="profile"
+              width={620}
+              height={620}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="flex flex-col text-center md:text-left gap-2"
+          >
+            <h2 className="text-3xl font-semibold">Hello, I’m</h2>
+            <h1 className="text-3xl md:text-4xl font-extrabold mt-2">
+              Adithya Prasetio Hutahaean
+            </h1>
+            <div className="flex items-center justify-center md:justify-start gap-2 mt-4">
+              <span className="text-2xl font-medium">And I&apos;m a</span>
+              <span
+                className="text-2xl font-bold text-[#212529]"
+              >
+                <ReactTyped
+                  strings={[
+                    "Web Developer",
+                    "Backend Developer",
+                  ]}
+                  typeSpeed={70}
+                  backSpeed={70}
+                  loop
+                  className="text-black dark:text-white"
+                ></ReactTyped>
+              </span>
+            </div>
+            <div className="flex mt-4 justify-center md:justify-start space-x-4">
+              <Link href="https://github.com/HikaruYo">
+                <FaGithub
+                  className="inline-flex justify-center items-center w-10 h-10 border-2 border-black dark:border-white rounded-full p-2 text-black dark:text-white hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black transition duration-500"
+                />
+              </Link>
+              <Link href="https://www.instagram.com/adithaean/">
+                <FaInstagram
+                  className="inline-flex justify-center items-center w-10 h-10 border-2 border-black dark:border-white rounded-full p-2 text-black dark:text-white hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black transition duration-500"
+                />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </main>
+
+    </div>
+  );
 }

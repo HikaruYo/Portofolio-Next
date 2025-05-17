@@ -15,3 +15,28 @@
 /*    --text-color: #fff;*/
 /*    --main-color: #5b6cde; !* light blue: #0ef *!*/
 /*}*/
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s ease, width 0.5s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+}

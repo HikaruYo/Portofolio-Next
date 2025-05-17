@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import React from "react";
+import ModeToggle from "@/app/components/modeToggle";
+import Navbar from "@/app/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,17 +21,33 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" suppressHydrationWarning>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-[#212529] dark:text-white`}
+    >
+    <main className="px-64">
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 text-white bg-[#495057] shadow-md px-8 py-3 rounded-full flex gap-28 items-center font-medium backdrop-blur-sm z-50">
+        <h1 className="text-xl font-bold h-7 w-44 items-center justify-center">
+          Hikaru&apos;s Domain
+        </h1>
+
+        <Navbar />
+
+        <ModeToggle />
+      </nav>
+
+      <div>{children}</div>
+
+      <footer className="fixed bottom-2 w-[62.5vw] text-center text-sm text-neutral-500">
+        2025 Copyright Hikaru
+      </footer>
+    </main>
+    </body>
     </html>
   );
 }
