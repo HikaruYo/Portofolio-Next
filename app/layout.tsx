@@ -28,11 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
     <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-[#212529] dark:text-white`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-[#212529] dark:text-white transition duration-500`}
     >
     <main className="px-64">
+      {/* Navbar */}
       <nav className="fixed top-5 left-1/2 -translate-x-1/2 text-white bg-[#495057] shadow-md px-8 py-3 rounded-full flex gap-28 items-center font-medium backdrop-blur-sm z-50">
-        <h1 className="text-xl font-bold h-7 w-44 items-center justify-center">
+        <h1 className="text-xl font-bold h-7 w-44 items-center justify-center cursor-default">
           Hikaru&apos;s Domain
         </h1>
 
@@ -41,7 +42,8 @@ export default function RootLayout({
         <ModeToggle />
       </nav>
 
-      <div>{children}</div>
+      {/* Main Content */}
+      {children}
 
       <footer className="fixed bottom-2 w-[62.5vw] text-center text-sm text-neutral-500">
         2025 Copyright Hikaru

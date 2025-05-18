@@ -9,13 +9,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/*:root {*/
-/*    --bg-color: #1f242d;*/
-/*    --second-bg-color: #323946;*/
-/*    --text-color: #fff;*/
-/*    --main-color: #5b6cde; !* light blue: #0ef *!*/
-/*}*/
-
 .nav-link {
     position: relative;
     display: inline-block;
