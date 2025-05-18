@@ -22,7 +22,7 @@ export default function Navbar() {
   }, []);
 
   const links = (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-8 text-lg md:items-center">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-lg md:items-center">
       <Link
         href="/"
         className={`nav-link ${pathname === "/" ? "active" : ""}`}
@@ -67,7 +67,8 @@ export default function Navbar() {
           {/* Mobile Menu */}
           {menuOpen && (
             <div
-              className="absolute top-[50px] left-0 w-full bg-[#495057] shadow-md px-8 py-6 z-40 flex flex-col gap-4 text-white text-base font-medium">
+              className="absolute top-[50px] left-0 w-full bg-[#495057] shadow-md px-8 py-6 z-40 flex flex-col gap-8 text-white text-base font-medium"
+            >
               {links}
               <ModeToggle />
             </div>

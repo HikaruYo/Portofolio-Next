@@ -19,7 +19,7 @@ export default function Home() {
           initial={{opacity: 0, y: 50}}
           animate={{opacity: 1, y: 0}}
           transition={{duration: 1}}
-          className="w-[280px] h-[280px] md:w-[350px] md:h-[300px] rounded-3xl overflow-hidden shadow-lg"
+          className="w-[300px] h-[300px] rounded-3xl overflow-hidden shadow-lg"
         >
           <Image
             src={Violet}

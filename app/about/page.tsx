@@ -9,14 +9,14 @@ export default function AboutPage() {
     <main className="min-h-screen flex bg-white text-black dark:bg-[#212529] dark:text-white transition duration-500">
 
       {/* Main Content */}
-      <div className="flex flex-col md:flex-row items-center justify-between p-7 gap-24">
+      <div className="flex flex-col md:flex-row translate-y-14 md:translate-y-0 items-center p-7 gap-14 md:gap-24">
 
         {/* Left Content */}
         <motion.div
           initial={{opacity: 0, y: 50}}
           animate={{opacity: 1, y: 0}}
           transition={{duration: 1}}
-          className="flex flex-col flex-1 text-center md:text-left gap-6"
+          className="flex flex-col md:flex-1 text-left md:text-left gap-6"
         >
           <h2 className="text-4xl font-bold">About <span className="text-gray-600 dark:text-gray-400 transition duration-500">Me!</span></h2>
           <p>
@@ -32,7 +32,7 @@ export default function AboutPage() {
           initial={{opacity: 0, y: 50}}
           animate={{opacity: 1, y: 0}}
           transition={{duration: 1}}
-          className="w-[300px] h-[350px] rounded-3xl overflow-hidden shadow-lg"
+          className="md:flex-1 w-[300px] h-[350px] rounded-3xl overflow-hidden shadow-lg"
         >
           <Image
             src={Me}
