@@ -19,7 +19,7 @@ export default function Home() {
           initial={{opacity: 0, y: 50}}
           animate={{opacity: 1, y: 0}}
           transition={{duration: 1}}
-          className="w-[300px] h-[300px] rounded-3xl overflow-hidden shadow-lg"
+          className="w-[300px] h-[300px] md:w-[350px] rounded-3xl overflow-hidden shadow-lg"
         >
           <Image
             src={Violet}
@@ -58,6 +58,7 @@ export default function Home() {
                 ></ReactTyped>
               </span>
           </div>
+          {/* Icons */}
           <div className="flex mt-4 justify-start space-x-4">
             <Link href="https://github.com/HikaruYo">
               <FaGithub
