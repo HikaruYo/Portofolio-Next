@@ -30,22 +30,26 @@ export default function RootLayout({
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-[#212529] dark:text-white transition duration-500`}
     >
-    <main className="px-64">
+    <main className="px-6 md:px-64">
       {/* Navbar */}
-      <nav className="fixed top-5 left-1/2 -translate-x-1/2 text-white bg-[#495057] shadow-md px-8 py-3 rounded-full flex gap-28 items-center font-medium backdrop-blur-sm z-50">
-        <h1 className="text-xl font-bold h-7 w-44 items-center justify-center cursor-default">
+      <nav
+        className="fixed w-full md:w-auto left-0 top-0 md:top-5 md:left-1/2 md:-translate-x-1/2 text-white bg-[#495057] shadow-md px-8 py-3 md:rounded-full flex gap-4 md:gap-28 items-center font-medium backdrop-blur-sm z-50"
+      >
+        <h1 className="flex-2 text-xl font-bold h-7 w-auto md:w-44 items-center justify-center cursor-default">
           Hikaru&apos;s Domain
         </h1>
 
         <Navbar />
 
-        <ModeToggle />
+        <div className="hidden md:block">
+          <ModeToggle />
+        </div>
       </nav>
 
       {/* Main Content */}
       {children}
 
-      <footer className="fixed bottom-2 w-[62.5vw] text-center text-sm text-neutral-500">
+      <footer className="fixed bottom-2 w-full md:w-[63vw] items-center justify-center text-center text-sm text-neutral-500">
         2025 Copyright Hikaru
       </footer>
     </main>
