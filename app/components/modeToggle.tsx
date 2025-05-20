@@ -5,21 +5,28 @@ import { FaSun } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
 
 export default function ModeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // On mount, check localStorage
+  // Check localStorage for theme
   useEffect(() => {
     const savedMode = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    if (savedMode === "dark" || (!savedMode && prefersDark)) {
-      setIsDarkMode(true);
+    const isDark = savedMode === "dark" || (!savedMode && prefersDark);
+    setIsDarkMode(isDark);
+
+    if (isDark) {
       document.documentElement.classList.add("dark");
     } else {
-      setIsDarkMode(false);
       document.documentElement.classList.remove("dark");
     }
+
+    setIsMounted(true); // Render theme logo after mode is selected
   }, []);
+
+  // If not selected, not rendering theme logo
+  if (!isMounted) return null;
 
   // When toggle is clicked
   const toggleDarkMode = () => {
