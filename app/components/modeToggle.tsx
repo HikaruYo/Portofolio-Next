@@ -7,19 +7,37 @@ import React, { useEffect, useState } from "react";
 export default function ModeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // On mount, check localStorage
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.classList.add("dark");
+    const savedMode = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (savedMode === "dark" || (!savedMode && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
     } else {
-      root.classList.remove("dark");
+      setIsDarkMode(false);
+      document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode]);
+  }, []);
+
+  // When toggle is clicked
+  const toggleDarkMode = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
 
   return (
     <div
       className="relative w-6 h-6 cursor-pointer"
-      onClick={() => setIsDarkMode(!isDarkMode)}
+      onClick={toggleDarkMode}
     >
       <FaSun
         className={`absolute w-6 h-6 transition-opacity duration-700 ${isDarkMode ? 'opacity-0' : 'opacity-100'}`}
